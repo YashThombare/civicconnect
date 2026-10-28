@@ -850,3 +850,178 @@
   filter: drop-shadow(0 0 6px rgba(37, 99, 235, 0.8));
 }
 
+/* ==========================================================================
+   TRACK COMPLAINTS — RESPONSIVE AUTO-ADJUSTMENTS
+   Smart Boards, Tablets, Laptops & Mobile Phones
+   ========================================================================== */
+
+/* Smart Boards & Ultra-Wide (>= 1600px) */
+@media (min-width: 1600px) {
+  .track-clean-page {
+    max-width: min(92vw, 1750px);
+    gap: 24px;
+  }
+
+  .track-card {
+    padding: 26px;
+    border-radius: 18px;
+    gap: 16px;
+  }
+
+  .track-map-container {
+    height: 560px;
+    border-radius: 18px;
+  }
+
+  .track-stat-pill {
+    padding: 8px 18px;
+    font-size: 14px;
+  }
+
+  .track-toggle-btn {
+    padding: 8px 20px;
+    font-size: 14px;
+  }
+}
+
+/* Mobile Phones (<= 768px) */
+@media (max-width: 768px) {
+  .track-clean-page {
+    width: 100%;
+    gap: 14px;
+  }
+
+  .track-clean-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .track-stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(95px, 1fr));
+    gap: 6px;
+  }
+
+  .track-stat-pill {
+    padding: 5px 8px;
+    font-size: 11px;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .track-view-toggle {
+    width: 100%;
+    display: flex;
+  }
+
+  .track-toggle-btn {
+    flex: 1;
+    text-align: center;
+    padding: 7px 10px;
+    font-size: 12.5px;
+  }
+
+  .track-filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .track-search-wrap {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .track-status-filters {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .track-status-filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .track-status-chip {
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding: 6px 11px;
+    font-size: 12px;
+  }
+
+  .track-card {
+    padding: 16px 14px;
+    border-radius: 14px;
+    gap: 10px;
+  }
+
+  .track-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .track-card-right {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .track-progress-row {
+    gap: 4px;
+    margin: 4px 0;
+  }
+
+  .track-step-label {
+    font-size: 9.5px;
+  }
+
+  .track-step-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .track-card-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .track-endorse-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .track-map-container {
+    height: clamp(300px, 45vh, 400px);
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .track-card {
+    padding: 13px 10px;
+  }
+
+  .track-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .track-title-badges-row {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .track-map-container {
+    height: 290px;
+  }
+}
+
+

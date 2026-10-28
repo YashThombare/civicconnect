@@ -2107,3 +2107,48 @@
   font-size: 12px;
   color: var(--civic-muted, #64748b);
 }
+
+/* =========================================
+   SMART BOARD & 4K DISPLAY ADAPTATIONS (>= 1600px)
+   ========================================= */
+@media (min-width: 1600px) {
+  .officer-dashboard {
+    max-width: min(94vw, 1780px);
+    padding: 42px 36px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .stat-card {
+    padding: 28px;
+    border-radius: 20px;
+  }
+
+  .stat-card-value {
+    font-size: 38px;
+  }
+
+  .complaint-card {
+    padding: 30px;
+    border-radius: 20px;
+  }
+}
+
+@media (min-width: 2200px) {
+  .officer-dashboard {
+    max-width: min(95vw, 2260px);
+    padding: 56px 48px;
+  }
+
+  .stats-grid {
+    gap: 30px;
+  }
+
+  .stat-card-value {
+    font-size: 44px;
+  }
+}
+

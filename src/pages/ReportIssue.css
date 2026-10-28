@@ -1501,3 +1501,92 @@
   color: var(--civic-text);
 }
 
+/* ==========================================================================
+   REPORT ISSUE — RESPONSIVE AUTO-ADJUSTMENTS
+   Smart Boards, Tablets, Laptops & Mobile Phones
+   ========================================================================== */
+
+/* Smart Boards & Ultra-Wide (>= 1600px) */
+@media (min-width: 1600px) {
+  .report-clean-page {
+    max-width: 1380px;
+  }
+
+  .report-clean-card {
+    padding: 38px 36px;
+    border-radius: 24px;
+    gap: 32px;
+  }
+
+  .clean-map-box {
+    height: 500px;
+  }
+
+  .clean-submit-btn {
+    padding: 16px 38px;
+    font-size: 16px;
+    border-radius: 14px;
+  }
+}
+
+/* Mobile Phones (<= 768px) */
+@media (max-width: 768px) {
+  .report-clean-page {
+    width: 100%;
+  }
+
+  .report-clean-card {
+    padding: 18px 14px;
+    border-radius: 14px;
+    gap: 18px;
+  }
+
+  .report-clean-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .clean-map-box {
+    height: clamp(260px, 42vh, 320px);
+    border-radius: 10px;
+  }
+
+  .clean-category-row {
+    gap: 6px;
+  }
+
+  .clean-cat-btn {
+    padding: 7px 11px;
+    font-size: 12px;
+    border-radius: 8px;
+  }
+
+  .clean-photo-dropzone {
+    padding: 22px 14px;
+  }
+
+  .clean-submit-bar {
+    justify-content: stretch;
+    width: 100%;
+  }
+
+  .clean-submit-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 13px 20px;
+    font-size: 15px;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .report-clean-card {
+    padding: 14px 10px;
+  }
+
+  .clean-map-box {
+    height: 260px;
+  }
+}
+
+

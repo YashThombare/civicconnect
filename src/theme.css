@@ -1857,32 +1857,509 @@ button {
   background: var(--civic-muted);
 }
 
-/* Responsive Overrides */
-@media (max-width: 768px) {
+/* ==========================================================================
+   MULTI-DEVICE RESPONSIVE SYSTEM
+   Seamless auto-scaling across:
+   1. Smart Boards & 4K Displays (>= 1600px & >= 2200px)
+   2. Laptops & Standard Desktops (1025px - 1599px)
+   3. Tablets & iPads (641px - 1024px)
+   4. Mobile Phones (320px - 640px)
+   5. Interactive Touchscreens / Smart Board Stylus Inputs
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. ULTRA-WIDE, 4K & SMART BOARD PRESENTATION (>= 1600px and >= 2200px)
+   Interactive Whiteboards, Municipal Command Centers & Conference Hall Displays
+   -------------------------------------------------------------------------- */
+@media (min-width: 1600px) {
+  :root {
+    --civic-touch-target: 48px;
+  }
+
+  html {
+    font-size: 17px;
+  }
+
+  .container {
+    max-width: min(94vw, 1680px);
+    padding: 44px 36px 80px;
+  }
+
+  .navbar {
+    padding: 16px 5%;
+  }
+
+  .brand-text {
+    font-size: 24px;
+  }
+
+  .nav-links button {
+    padding: 10px 20px;
+    font-size: 15px;
+  }
+
+  .nav-user-profile {
+    padding: 7px 18px 7px 8px;
+    font-size: 14.5px;
+  }
+
   .hero {
-    padding: 36px 24px;
+    padding: 72px 64px;
+    border-radius: 32px !important;
+  }
+
+  .hero-content {
+    max-width: 1100px;
+  }
+
+  .hero h1 {
+    font-size: clamp(42px, 4.2vw, 68px);
+  }
+
+  .hero-lead {
+    font-size: 20px;
+    max-width: 880px;
+  }
+
+  .hero-cta {
+    font-size: 17px;
+    padding: 16px 36px;
+  }
+
+  .home-steps-grid {
+    grid-template-columns: repeat(3, minmax(320px, 1fr));
+    gap: 32px;
+  }
+
+  .step-card {
+    padding: 42px 36px;
+  }
+
+  .citizen-stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .citizen-stat-card {
+    padding: 30px;
+  }
+
+  .citizen-stat-card h3 {
+    font-size: 38px;
+  }
+
+  /* Expanded Map Heights on Smart Boards & Large Monitors */
+  .clean-map-box,
+  .track-map-container,
+  .map-container,
+  .leaflet-container {
+    min-height: 500px;
+  }
+}
+
+@media (min-width: 2200px) {
+  /* 4K UHD Displays & 65"-86" Municipal Smart Boards */
+  html {
+    font-size: 19px;
+  }
+
+  .container {
+    max-width: min(95vw, 2280px);
+    padding: 56px 48px 100px;
+  }
+
+  .brand-text {
+    font-size: 28px;
+  }
+
+  .hero {
+    padding: 90px 80px;
+    border-radius: 40px !important;
+  }
+
+  .hero h1 {
+    font-size: 74px;
+  }
+
+  .hero-lead {
+    font-size: 23px;
+    max-width: 1100px;
+  }
+
+  .hero-cta,
+  .primary-button,
+  .secondary-button {
+    font-size: 18px;
+    padding: 18px 40px;
+    border-radius: 16px;
+  }
+
+  .clean-map-box,
+  .track-map-container,
+  .map-container,
+  .leaflet-container {
+    min-height: 640px;
+  }
+
+  .citizen-stats {
+    gap: 32px;
+  }
+
+  .citizen-stat-card {
+    padding: 36px;
+  }
+
+  .citizen-stat-card h3 {
+    font-size: 46px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. TABLET ADAPTATIONS (641px - 1024px)
+   iPads, Android Tablets, Surface in Portrait & Landscape
+   -------------------------------------------------------------------------- */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .container {
+    padding: 24px 20px 48px;
+  }
+
+  .navbar {
+    padding: 12px 20px;
+    gap: 12px;
+  }
+
+  .nav-links button {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .hero {
+    padding: 44px 32px;
+    border-radius: 22px !important;
+  }
+
+  .hero h1 {
+    font-size: clamp(30px, 5vw, 42px);
+  }
+
+  .home-steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .citizen-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .clean-map-box,
+  .track-map-container {
+    min-height: 380px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   3. MOBILE PHONES (<= 768px)
+   Smartphones, Phablets, Foldables
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  .container {
+    padding: 16px 14px 44px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Two-tier Mobile Responsive Navbar */
+  .navbar {
+    padding: 10px 14px;
+    flex-wrap: wrap;
+    gap: 10px 8px;
+    position: sticky;
+    top: 0;
+  }
+
+  .nav-brand {
+    gap: 8px;
+  }
+
+  .brand-text {
+    font-size: 18px;
+  }
+
+  .brand-text small {
+    display: none;
+  }
+
+  .nav-actions {
+    gap: 8px;
+    margin-left: auto;
+  }
+
+  .nav-user-profile {
+    padding: 4px 8px 4px 4px;
+    gap: 6px;
+  }
+
+  .nav-user-name {
+    display: none; /* Keep avatar and role pill clean on mobile */
+  }
+
+  .nav-role-badge {
+    padding: 2px 7px;
+    font-size: 10px;
+  }
+
+  .logout-button,
+  .nav-auth-btn {
+    padding: 6px 11px !important;
+    font-size: 12px !important;
+    border-radius: 8px !important;
+  }
+
+  /* Horizontal scrolling touch tabs for navigation */
+  .nav-links {
+    order: 3;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 2px 0 4px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-links button {
+    flex-shrink: 0;
+    padding: 7px 13px;
+    font-size: 12.5px;
+    border-radius: 999px;
+    background: var(--civic-surface-secondary);
+  }
+
+  .nav-links button.active {
+    background: var(--civic-primary) !important;
+    color: #ffffff !important;
+  }
+
+  /* Mobile Hero */
+  .hero {
+    padding: 30px 20px;
     border-radius: 20px !important;
   }
-  
-  .hero-stats-strip {
-    gap: 14px;
+
+  .hero h1 {
+    font-size: clamp(26px, 7.5vw, 36px);
+    letter-spacing: -0.8px;
+    margin-bottom: 12px;
   }
-  
+
+  .hero-lead {
+    font-size: 14.5px;
+    line-height: 1.55;
+    margin-bottom: 24px;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .hero-actions button,
+  .hero-cta {
+    width: 100%;
+    justify-content: center;
+    padding: 13px 20px;
+    font-size: 14.5px;
+  }
+
+  .hero-stats-strip {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    padding-top: 20px;
+  }
+
   .hero-stat-sep {
     display: none;
   }
-  
+
+  .hero-stat-item strong {
+    font-size: 20px;
+  }
+
+  .hero-stat-item span {
+    font-size: 11px;
+  }
+
+  /* Steps Grid */
+  .home-steps-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .step-card {
+    padding: 24px 20px;
+    border-radius: 16px;
+  }
+
+  /* Citizen Dashboard on Mobile */
+  .citizen-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .citizen-stat-card {
+    padding: 16px 14px;
+    border-radius: 14px;
+  }
+
+  .citizen-stat-card p {
+    font-size: 12px;
+  }
+
+  .citizen-stat-card h3 {
+    font-size: 24px;
+    margin: 6px 0 2px;
+  }
+
+  .citizen-stat-card span {
+    font-size: 11px;
+  }
+
+  .citizen-content-card {
+    padding: 18px 14px;
+    border-radius: 16px;
+  }
+
+  .section-title-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .citizen-complaint-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 14px;
+  }
+
+  .complaint-type-icon {
+    display: none;
+  }
+
+  /* Auth Pages (Login / Register) */
   .auth-card {
-    padding: 28px 20px;
+    padding: 26px 18px;
     border-radius: 20px;
+    max-width: 100%;
   }
-  
-  .navbar {
-    padding: 12px 16px;
+
+  .auth-card h1 {
+    font-size: 23px;
   }
-  
+
+  /* Notification dropdown fitting viewport */
+  .notification-panel {
+    position: fixed !important;
+    top: 60px !important;
+    left: 12px !important;
+    right: 12px !important;
+    width: auto !important;
+    max-width: none !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. ULTRA-COMPACT SMARTPHONES (<= 480px)
+   iPhone SE, Galaxy A-series, Folded screens (320px - 480px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
   .container {
-    padding: 20px 16px 40px;
+    padding: 12px 10px 36px;
+  }
+
+  .navbar {
+    padding: 8px 10px;
+  }
+
+  .brand-text {
+    font-size: 17px;
+  }
+
+  .brand-icon svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .hero {
+    padding: 24px 14px;
+    border-radius: 16px !important;
+  }
+
+  .hero h1 {
+    font-size: 24px;
+  }
+
+  .hero-pill {
+    font-size: 10px;
+    padding: 4px 10px;
+    margin-bottom: 14px;
+  }
+
+  .hero-stats-strip {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .citizen-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-card {
+    padding: 20px 14px;
+  }
+
+  .clean-map-box,
+  .track-map-container {
+    min-height: 280px !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. INTERACTIVE TOUCHSCREEN & SMART BOARD TARGETS
+   Stylus, Finger taps on Mobile, Tablet & Interactive Whiteboard screens
+   -------------------------------------------------------------------------- */
+@media (hover: none) and (pointer: coarse) {
+  button,
+  .nav-links button,
+  .clean-cat-btn,
+  .track-toggle-btn,
+  .track-status-chip,
+  input,
+  select,
+  textarea {
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+
+  .track-card:hover,
+  .step-card:hover {
+    transform: none; /* Avoid sticky hover state on touch screens */
   }
 }
 
