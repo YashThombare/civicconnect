@@ -1,18 +1,33 @@
+const PRODUCTION_BACKEND_URL = 'https://civicconnect-0fam.onrender.com'
 
 export function getApiBaseUrl() {
   const envUrl = import.meta.env.VITE_API_BASE_URL
   if (typeof window !== 'undefined' && window.location) {
     const hostname = window.location.hostname
+
+    // Local development
+    if (hostname === 'localhost' || hostname === '127.0.0.1') {
+      return (envUrl && !envUrl.includes('onrender.com')) ? envUrl : 'http://localhost:5000'
+    }
+
     // When accessing from phone or another device on the Wi-Fi LAN
     if (
-      hostname !== 'localhost' &&
-      hostname !== '127.0.0.1' &&
-      (!envUrl || envUrl.includes('localhost') || envUrl.includes('127.0.0.1'))
+      hostname.startsWith('192.168.') ||
+      hostname.startsWith('10.') ||
+      hostname.startsWith('172.')
     ) {
       return `http://${hostname}:5000`
     }
+
+    // Production on Vercel: ignore old non-working URL, use live Render URL
+    if (envUrl && !envUrl.includes('civicconnect-api.onrender.com')) {
+      return envUrl.replace(/\/+$/, '')
+    }
+
+    return PRODUCTION_BACKEND_URL
   }
-  return envUrl || 'http://localhost:5000'
+
+  return envUrl || PRODUCTION_BACKEND_URL
 }
 
 export async function apiRequest(path, options = {}) {
