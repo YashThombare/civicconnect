@@ -24,6 +24,7 @@ import TrackComplaints from './pages/TrackComplaints'
 import OfficerDashboard from './pages/OfficerDashboard'
 import Notifications from './components/Notifications'
 import ThemeToggle from './components/ThemeToggle'
+import CommandPalette from './components/CommandPalette'
 import { sound } from './utils/soundFx'
 import { getApiBaseUrl, apiRequest } from './services/api'
 
@@ -83,6 +84,18 @@ function getDashboardPage(session) {
 function App() {
   const [session, setSession] = useState(getSession)
   const [page, setPage] = useState('Home')
+  const [isCmdOpen, setIsCmdOpen] = useState(false)
+
+  useEffect(() => {
+    function handleKeyDown(e) {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault()
+        setIsCmdOpen((prev) => !prev)
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [])
 
   useEffect(() => {
     function handleNavigate(e) {
@@ -239,6 +252,17 @@ function App() {
         </nav>
 
         <div className="nav-actions">
+          <button
+            type="button"
+            className="nav-cmd-trigger"
+            onClick={() => setIsCmdOpen(true)}
+            title="Search or jump (Ctrl + K)"
+          >
+            <Search size={14} />
+            <span className="nav-cmd-text">Search...</span>
+            <kbd className="nav-cmd-kbd">Ctrl K</kbd>
+          </button>
+
           <ThemeToggle />
 
           {isAuthenticated ? (
@@ -494,6 +518,15 @@ function App() {
           © 2026 CivicConnect &bull; Community Problem Reporting Platform
         </p>
       </footer>
+
+      <CommandPalette
+        isOpen={isCmdOpen}
+        onClose={() => setIsCmdOpen(false)}
+        onNavigate={(targetPage) => {
+          setPage(targetPage)
+          setIsCmdOpen(false)
+        }}
+      />
     </div>
   )
 }
